@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marketing Agency Kolesov — Иван Колесов</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;600&display=swap">
+<style>
+:root{--bg:#F2F0FA;--fg:#14163A;--mut:#575A82;--card:#fff;--line:#d6d3ec;--acc:#3F4DFF;--hi:#FFB800;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1030;--fg:#F1F0FF;--mut:#A3A6D4;--card:#181A4A;--line:#2B2E6B;--acc:#7C88FF;--hi:#FFC93C}}
+:root[data-theme="dark"]{--bg:#0F1030;--fg:#F1F0FF;--mut:#A3A6D4;--card:#181A4A;--line:#2B2E6B;--acc:#7C88FF;--hi:#FFC93C}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--fg);font:400 17px/1.55 Manrope,system-ui,sans-serif;overscroll-behavior:none}
+h1,h2,h3,.d{font-family:Unbounded,Manrope,system-ui,sans-serif;font-weight:700;line-height:1.12;letter-spacing:-.01em}
+h2{font-size:clamp(26px,4.6vw,54px)}
+p{color:var(--mut);max-width:58ch}
+.scene{position:fixed;inset:0;display:grid;place-items:center;padding:calc(24px + env(safe-area-inset-top,0px)) 6vw calc(96px + env(safe-area-inset-bottom,0px));visibility:hidden;overflow:hidden;will-change:opacity}
+.a{opacity:0;transform:translate3d(0,30px,0) scale(.97);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.a.on{opacity:1;transform:none}
+#pg{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:4px;width:100%;background:var(--hi);transform-origin:left;transform:scaleX(0);z-index:9}
+/* hero */
+.hero{grid-template-columns:1.1fr .9fr;gap:4vw}
+.hero h1{font-size:clamp(34px,6vw,88px)}
+.hero .sub{margin-top:22px;font-size:clamp(17px,1.7vw,22px)}
+.who{margin-top:26px;display:inline-flex;gap:12px;align-items:center;font-weight:600}
+.who i{width:10px;height:10px;border-radius:50%;background:var(--hi)}
+.wheel{width:min(44vw,64vh);justify-self:center;color:var(--acc);will-change:transform}
+/* zoom */
+.ringbg{position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,transparent var(--ri,10.6vmin),var(--hi) var(--ri,10.6vmin),var(--hi) var(--ro,13vmin),transparent var(--ro,13vmin))}
+.zoom .t1,.zoom .t2{position:absolute;text-align:center;padding:0 8vw}
+.zoom .t1{font-size:clamp(20px,4vw,44px);opacity:calc(1 - var(--p)*6)}
+.zoom .t2{font-size:clamp(24px,4.6vw,58px);opacity:clamp(0,calc((var(--p) - .55)*5),1);transform:scale(calc(.85 + var(--p)*.15))}
+.zoom .t2 span{display:block;margin:18px auto 0;font:400 clamp(16px,1.6vw,20px)/1.6 Manrope,sans-serif;color:var(--mut);max-width:48ch}
+/* founder */
+.founder{display:grid;grid-template-columns:auto 1fr;gap:6vw;align-items:center;max-width:1000px}
+.mono{width:min(26vw,240px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;font:700 clamp(36px,7vw,76px) Unbounded,sans-serif;background:var(--acc);color:#fff;position:relative}
+.mono::after{content:"";position:absolute;inset:-14px;border-radius:50%;border:2px dashed var(--hi);animation:spin 18s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.founder h2{margin-bottom:16px}
+/* services */
+.svc{width:min(1120px,100%)}
+.svc h2{margin-bottom:4vh}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:16px}
+.card>div:first-child{animation:fl 5s ease-in-out infinite alternate}
+@keyframes fl{to{transform:translate3d(0,-6px,0)}}
+.card h3{font-size:19px;margin:14px 0 6px}
+.card p{font-size:14px;line-height:1.45}
+.demo{height:170px;border-radius:12px;background:color-mix(in srgb,var(--acc) 10%,var(--bg));padding:12px;position:relative;overflow:hidden}
+.bar{display:flex;gap:5px;margin-bottom:10px}.bar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.h{height:40px;border-radius:8px;background:var(--acc);transform:scaleX(0);transform-origin:left}
+.on .h{animation:sx 1.2s .3s cubic-bezier(.3,.7,.2,1) both}@keyframes sx{to{transform:none}}
+.row{display:flex;gap:8px;margin-top:10px}.row b{flex:1;height:44px;border-radius:8px;background:var(--line);transform:scaleY(0);transform-origin:bottom}
+.on .row b{animation:sy .7s .6s both}.on .row b:nth-child(2){animation-delay:.8s}.on .row b:nth-child(3){animation-delay:1s}
+@keyframes sy{to{transform:none}}
+.cur{position:absolute;right:30px;bottom:18px;width:14px;height:14px;background:var(--hi);border-radius:50% 50% 50% 0;rotate:-45deg}
+.on .cur{animation:mv 3.5s 1.4s ease-in-out infinite alternate}@keyframes mv{to{transform:translate3d(-90px,-40px,0)}}
+.m{opacity:0;max-width:86%;padding:6px 11px;border-radius:13px;font-size:12px;line-height:1.35;margin-bottom:6px;width:fit-content}
+.m.u{margin-left:auto;background:var(--acc);color:#fff}.m.b{background:var(--card);border:1px solid var(--line)}
+.on .m{animation:pop .6s var(--d) both}@keyframes pop{from{opacity:0;transform:translate3d(0,12px,0) scale(.92)}to{opacity:1;transform:none}}
+.code div{height:9px;border-radius:5px;margin:0 0 10px;background:var(--acc);transform:scaleX(0);transform-origin:left;width:var(--w)}
+.code div:nth-child(2n){background:var(--hi)}.code div:nth-child(3n){background:var(--line)}
+.on .code div{animation:sx 1s var(--d) both}
+.dots{display:inline-flex;gap:4px}.dots i{width:7px;height:7px;border-radius:50%;background:var(--acc);animation:bn 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}@keyframes bn{50%{transform:translate3d(0,-5px,0)}}
+/* growth */
+.grow{display:grid;grid-template-columns:1fr 1.2fr;gap:5vw;align-items:center;width:min(1060px,100%)}
+.grow h2{margin-bottom:16px}
+.nums{display:flex;gap:40px;margin-top:26px}.nums b{display:block;font:700 clamp(40px,6vw,72px)/1 Unbounded,sans-serif;color:var(--acc)}
+.chart{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px}
+.chart small{color:var(--mut);font-size:13px}
+.chart path{fill:none;stroke:var(--acc);stroke-width:4;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - clamp(0,calc((var(--p) - .2)*1.8),1))}
+.chart rect{fill:color-mix(in srgb,var(--hi) 55%,transparent);transform-box:fill-box;transform-origin:bottom;transform:scaleY(clamp(0,calc((var(--p) - var(--k))*5),1))}
+/* geo */
+.geo{align-content:center;gap:5vh;text-align:center}
+.geo h2{transform:scale(calc(1.2 - var(--p)*.2))}
+.map{width:min(90vw,960px)}
+.map path{fill:none;stroke:var(--acc);stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:calc(1 - clamp(0,calc(var(--p)*1.3),1))}
+.map g{opacity:clamp(0,calc((var(--p) - var(--k))*7),1)}
+.map circle{fill:var(--hi)}.map text{fill:var(--fg);font:600 22px Manrope,sans-serif}
+/* end */
+.end{align-content:center;justify-items:center;text-align:center;gap:26px}
+.end h2{font-size:clamp(30px,6vw,74px);opacity:clamp(0,calc(var(--p)*5),1);transform:scale(calc(.8 + var(--e)*.2))}
+.end p{opacity:clamp(0,calc((var(--p) - .2)*5),1)}
+.btn{display:inline-block;background:var(--hi);color:#14163A;text-decoration:none;font:700 19px Unbounded,sans-serif;padding:20px 38px;border-radius:999px;opacity:clamp(0,calc((var(--p) - .35)*5),1);position:relative}
+.btn:focus-visible{outline:3px solid var(--acc);outline-offset:4px}
+.btn::after{content:"";position:absolute;inset:0;border-radius:inherit;border:2px solid var(--hi);animation:rp 2s infinite}
+@keyframes rp{to{transform:scale(1.35);opacity:0}}
+/* controls */
+#ctl{position:fixed;left:50%;bottom:calc(16px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px 6px 6px;z-index:9;width:min(460px,92vw);transition:opacity .5s}
+#ctl.idle{opacity:0}#ctl:hover,#ctl:focus-within{opacity:1}
+#ctl button{width:44px;height:44px;border-radius:50%;border:0;background:transparent;color:var(--fg);font-size:18px;cursor:pointer;flex:none}
+#ctl button:hover,#ctl button:focus-visible{background:var(--line);outline:0}
+#pp{background:var(--hi)!important;color:#14163A!important}
+#sk{flex:1;min-width:0;accent-color:var(--acc);height:44px}
+@media (max-width:900px){
+.grid{grid-template-columns:1fr 1fr;gap:12px}.card p{display:none}.demo{height:118px}.card h3{font-size:16px;margin:10px 0 0}
+.hero{grid-template-columns:1fr;align-content:center;gap:2vh}.wheel{width:52vw;order:-1}
+.founder,.grow{grid-template-columns:1fr}.mono{width:120px}.founder{gap:24px}.nums{gap:28px}
+}
+@media (prefers-reduced-motion:reduce){.card>div:first-child{animation:none}}
+</style>
+</head>
+<body>
+<div id="pg"></div>
+
+<section class="scene hero" data-d="7">
+ <div>
+  <h1 class="a" data-at=".02">Marketing Agency Kolesov</h1>
+  <p class="sub a" data-at=".14">Рост аудитории, сайты, Telegram‑боты, своё ПО и ИИ‑ассистенты для бизнеса.</p>
+  <div class="who a" data-at=".26"><i></i>Иван Колесов, основатель</div>
+ </div>
+ <svg class="wheel a" data-at=".01" id="wheel" viewBox="-200 -200 400 400" fill="none" stroke="currentColor" aria-hidden="true">
+  <circle r="190" stroke-width="14"/><circle r="160" stroke-width="2" stroke-dasharray="3 9"/>
+  <circle r="34" stroke-width="10" fill="var(--hi)" stroke="var(--hi)"/>
+ </svg>
+</section>
+
+<section class="scene zoom" data-d="6">
+ <div class="ringbg" id="ring"></div>
+ <div class="t1 d">Колесо</div>
+ <div class="t2 d">Движение — это работа.<span>Я строю системы, которые двигают вашу аудиторию и бизнес вперёд.</span></div>
+</section>
+
+<section class="scene" data-d="5">
+ <div class="founder">
+  <div class="mono a" data-at=".05">ИК</div>
+  <div>
+   <h2 class="a" data-at=".2">Иван Колесов</h2>
+   <p class="a" data-at=".38">Основатель Marketing Agency Kolesov. Работаю руками: сам проектирую, делаю сайты, пишу ботов и ПО, настраиваю автоматизацию. Веду Telegram‑канал и расту вместе с аудиторией клиентов.</p>
+  </div>
+ </div>
+</section>
+
+<section class="scene" data-d="12">
+ <div class="svc">
+  <h2 class="a" data-at=".02">Что я строю</h2>
+  <div class="grid">
+   <div class="card a" data-at=".1"><div>
+    <div class="demo"><div class="bar"><i></i><i></i><i></i></div><div class="h"></div><div class="row"><b></b><b></b><b></b></div><span class="cur"></span></div>
+    <h3>Сайты</h3><p>Лендинги и сайты, которые приводят заявки, а не просто красиво выглядят.</p></div></div>
+   <div class="card a" data-at=".25"><div>
+    <div class="demo"><div class="m u" style="--d:.3s">/start</div><div class="m b" style="--d:1s">Привет! Чем помочь?</div><div class="m u" style="--d:1.8s">Хочу записаться</div><div class="m b" style="--d:2.6s">Готово, жду вас в среду ✓</div></div>
+    <h3>Telegram‑боты</h3><p>Приём заявок, рассылки, оплата и записи — без ручной рутины.</p></div></div>
+   <div class="card a" data-at=".4"><div>
+    <div class="demo code"><div style="--w:70%;--d:.2s"></div><div style="--w:45%;--d:.5s"></div><div style="--w:85%;--d:.8s"></div><div style="--w:60%;--d:1.1s"></div><div style="--w:35%;--d:1.4s"></div><div style="--w:75%;--d:1.7s"></div></div>
+    <h3>Кастомное ПО</h3><p>Внутренние сервисы и автоматизация под процессы конкретной компании.</p></div></div>
+   <div class="card a" data-at=".55"><div>
+    <div class="demo"><div class="m u" style="--d:.3s">Сколько заявок за неделю?</div><div class="m b" style="--d:1.3s"><span class="dots"><i></i><i></i><i></i></span></div></div>
+    <h3>ИИ‑ассистенты</h3><p>Отвечают клиентам, разбирают данные и берут на себя рутину.</p></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="scene" data-d="7">
+ <div class="grow">
+  <div>
+   <h2 class="a" data-at=".03">Аудитория — основа</h2>
+   <p class="a" data-at=".15">Контент, Telegram‑канал, воронки и автоматизация работают как одна система: внимание превращается в клиентов.</p>
+   <div class="nums a" data-at=".3"><div><b data-n="4">0</b>направления</div><div><b data-n="3">0</b>города клиентов</div></div>
+  </div>
+  <div class="chart a" data-at=".08">
+   <svg viewBox="0 0 400 220" width="100%" aria-label="Иллюстрация роста аудитории">
+    <rect x="20" y="150" width="40" height="60" style="--k:.15"/><rect x="85" y="125" width="40" height="85" style="--k:.22"/><rect x="150" y="100" width="40" height="110" style="--k:.29"/><rect x="215" y="70" width="40" height="140" style="--k:.36"/><rect x="280" y="40" width="40" height="170" style="--k:.43"/><rect x="345" y="15" width="40" height="195" style="--k:.5"/>
+    <path pathLength="1" d="M10 190 C70 175 100 150 160 115 S260 70 300 45 S360 25 392 8"/>
+   </svg>
+   <small>Схема: так выглядит рост, когда система работает</small>
+  </div>
+ </div>
+</section>
+
+<section class="scene geo" data-d="6">
+ <h2 class="d">Работаю по всей стране</h2>
+ <svg class="map" viewBox="0 0 900 200" aria-label="Иваново, Москва, Владикавказ">
+  <path pathLength="1" d="M70 100 C220 20 320 20 450 100 S700 180 830 100"/>
+  <g style="--k:.02"><circle cx="70" cy="100" r="12"/><text x="70" y="150" text-anchor="middle">Иваново</text></g>
+  <g style="--k:.38"><circle cx="450" cy="100" r="12"/><text x="450" y="150" text-anchor="middle">Москва</text></g>
+  <g style="--k:.72"><circle cx="830" cy="100" r="12"/><text x="830" y="150" text-anchor="middle">Владикавказ</text></g>
+ </svg>
+</section>
+
+<section class="scene end" data-d="6">
+ <h2 class="d">Давайте двигаться вместе</h2>
+ <p>Напишите в Telegram — расскажете о задаче, а я предложу, с чего начать.</p>
+ <a class="btn" href="https://t.me/k0lesov" target="_blank" rel="noopener">Написать в Telegram</a>
+</section>
+
+<nav id="ctl" aria-label="Управление презентацией">
+ <button id="prev" aria-label="Назад">‹</button>
+ <button id="pp" aria-label="Пауза">❚❚</button>
+ <button id="next" aria-label="Вперёд">›</button>
+ <input id="sk" type="range" min="0" max="1000" value="0" aria-label="Перемотка">
+</nav>
+
+<script>
+(function(){
+var $=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var cl=function(x,a,b){return Math.min(b===undefined?1:b,Math.max(a===undefined?0:a,x))};
+var sm=function(x){return x*x*(3-2*x)};
+var T=0,F=1.0,N,scs=$('.scene').map(function(el){var s={el:el,d:+el.dataset.d,s:T,on:$('[data-at]',el),hid:true};T+=s.d;return s});
+N=scs.length;
+var w=document.getElementById('wheel'),ring=document.getElementById('ring');
+for(var i=0;i<12;i++){var l=document.createElementNS('http://www.w3.org/2000/svg','line');l.setAttribute('x1',34);l.setAttribute('x2',182);l.setAttribute('stroke-width',i%3?3:6);l.setAttribute('transform','rotate('+i*30+')');w.appendChild(l)}
+var pg=document.getElementById('pg'),pp=document.getElementById('pp'),sk=document.getElementById('sk'),ctl=document.getElementById('ctl');
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+var t=0,goal=0,playing=!reduce,ready=false,drag=false,last=performance.now();
+setTimeout(function(){ready=true},250);
+function setPlaying(v){playing=v;var end=goal>=T-.01;pp.textContent=v?'❚❚':(end?'↺':'▶');pp.setAttribute('aria-label',v?'Пауза':(end?'Заново':'Играть'))}
+setPlaying(playing);
+function cur(){for(var k=N-1;k>=0;k--)if(goal>=scs[k].s-.01)return k;return 0}
+function go(k){k=cl(k,0,N-1);goal=scs[k].s+(k?.6:0);if(!playing&&k===N-1){}}
+function step(dir){var k=cur();if(dir<0&&goal-scs[k].s>1.8)go(k);else go(k+dir)}
+pp.onclick=function(){if(!playing&&goal>=T-.01){t=goal=0}setPlaying(!playing)};
+document.getElementById('next').onclick=function(){step(1)};
+document.getElementById('prev').onclick=function(){step(-1)};
+sk.oninput=function(){drag=true;setPlaying(false);goal=sk.value/1000*T};
+sk.onchange=function(){drag=false};
+addEventListener('keydown',function(e){var k=e.key;
+ if(k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'){step(1)}
+ else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){step(-1)}
+ else if(k===' '&&e.target.tagName!=='BUTTON'&&e.target.tagName!=='A'&&e.target.tagName!=='INPUT'){e.preventDefault();pp.click()}});
+var wl=0;addEventListener('wheel',function(e){var n=performance.now();if(Math.abs(e.deltaY)>25&&n-wl>800){wl=n;step(e.deltaY>0?1:-1)}},{passive:true});
+var ty=0,tx=0;addEventListener('touchstart',function(e){ty=e.touches[0].clientY;tx=e.touches[0].clientX},{passive:true});
+addEventListener('touchend',function(e){var dy=e.changedTouches[0].clientY-ty,dx=e.changedTouches[0].clientX-tx;
+ if(Math.abs(dy)>Math.abs(dx)&&Math.abs(dy)>60)step(dy<0?1:-1);else if(Math.abs(dx)>60)step(dx<0?1:-1)},{passive:true});
+var it;function wake(){ctl.classList.remove('idle');clearTimeout(it);it=setTimeout(function(){if(playing)ctl.classList.add('idle')},3000)}
+['pointermove','keydown','touchstart'].forEach(function(n){addEventListener(n,wake,{passive:true})});wake();
+
+function render(){
+ for(var k=0;k<N;k++){
+  var s=scs[k],o=1;
+  if(k>0)o*=cl((t-s.s)/F+.5);
+  if(k<N-1)o*=cl((s.s+s.d-t)/F+.5);
+  o=sm(o);
+  if(o<=.001){if(!s.hid){s.el.style.visibility='hidden';s.hid=true}continue}
+  if(s.hid){s.el.style.visibility='visible';s.hid=false}
+  var p=cl((t-s.s)/s.d),e=sm(p),st=s.el.style;
+  st.opacity=o.toFixed(3);st.setProperty('--p',p.toFixed(4));st.setProperty('--e',e.toFixed(4));
+  if(ready)for(var j=0;j<s.on.length;j++){var n=s.on[j];n.classList.toggle('on',p>=parseFloat(n.dataset.at))}
+  if(k===0)w.style.transform='rotate('+(t*14+e*220).toFixed(2)+'deg) scale('+(1+e*.3).toFixed(4)+')';
+  if(k===1){var sc=Math.pow(60,cl(p/.55)),R=12;ring.style.setProperty('--ri',(10.6*sc).toFixed(2)+'vmin');ring.style.setProperty('--ro',(13*sc).toFixed(2)+'vmin')}
+  if(k===4)$('[data-n]',s.el).forEach(function(c){c.textContent=Math.round(+c.dataset.n*cl((p-.3)*3))});
+ }
+ pg.style.transform='scaleX('+(t/T).toFixed(4)+')';
+ if(!drag)sk.value=Math.round(t/T*1000);
+}
+function frame(now){
+ var dt=Math.min(.05,(now-last)/1000);last=now;
+ if(playing){goal=Math.min(T,goal+dt);if(goal>=T)setPlaying(false)}
+ t+=(goal-t)*(1-Math.exp(-dt*8));
+ if(Math.abs(goal-t)<.0004)t=goal;
+ render();requestAnimationFrame(frame)
+}
+requestAnimationFrame(function(n){last=n;frame(n)});
+})();
+</script>
+</body>
+</html>
